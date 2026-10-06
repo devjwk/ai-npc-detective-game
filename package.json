@@ -1,0 +1,19 @@
+{
+  "name": "ai-npc-detective-game",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @game/web",
+    "build": "npm run build -w @game/web",
+    "start": "npm run start -w @game/web",
+    "lint": "npm run lint -w @game/web",
+    "test": "npm run test -w @game/game-engine"
+  },
+  "devDependencies": {
+    "puppeteer": "^24.37.2"
+  }
+}

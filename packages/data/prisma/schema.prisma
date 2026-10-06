@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model GameSession {
+  id             String       @id @default(cuid())
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  userId         String?
+  state          String       @default("intro")
+  turn           Int          @default(18)
+  selectedEnding String?
+  accusation     String?
+  dialogueLogs   DialogueLog[]
+  memories       MemoryChunk[]
+  evidences      SessionEvidence[]
+}
+
+model Evidence {
+  id          String            @id @default(cuid())
+  key         String            @unique
+  label       String
+  location    String
+  isCore      Boolean           @default(false)
+  sessions    SessionEvidence[]
+}
+
+model SessionEvidence {
+  id         String      @id @default(cuid())
+  sessionId  String
+  evidenceId String
+  session    GameSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  evidence   Evidence    @relation(fields: [evidenceId], references: [id], onDelete: Cascade)
+
+  @@unique([sessionId, evidenceId])
+}
+
+model DialogueLog {
+  id         String      @id @default(cuid())
+  createdAt  DateTime    @default(now())
+  sessionId  String
+  npcId      String
+  role       String
+  content    String
+  tokens     Int         @default(0)
+  session    GameSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+}
+
+model MemoryChunk {
+  id         String      @id @default(cuid())
+  createdAt  DateTime    @default(now())
+  sessionId  String
+  summary    String
+  tags       String[]
+  embedding  Json
+  session    GameSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+}
