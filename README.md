@@ -1,15 +1,11 @@
 <div align="center">
 
-# AI NPC DETECTIVE GAME
+<img src="assets/banner.svg" alt="AI NPC DETECTIVE GAME — Question the suspects. The suspects are language models with rules." width="100%">
 
-### Question the suspects. The suspects are language models with rules.
-
-**Next.js · TypeScript · OpenAI API**
-
-![Next.js](https://img.shields.io/badge/Web-Next.js-0F172A?style=flat-square)
-![TypeScript](https://img.shields.io/badge/Language-TypeScript-3178C6?style=flat-square)
-![OpenAI](https://img.shields.io/badge/NPC-OpenAI%20API-10A37F?style=flat-square)
-![Stage](https://img.shields.io/badge/Stage-Playable%20MVP-F59E0B?style=flat-square)
+![Next.js](https://img.shields.io/badge/Web-Next.js-B45309?style=flat-square&labelColor=0C0A09)
+![TypeScript](https://img.shields.io/badge/Language-TypeScript-78716C?style=flat-square&labelColor=0C0A09)
+![OpenAI](https://img.shields.io/badge/NPC-OpenAI%20API-92400E?style=flat-square&labelColor=0C0A09)
+![Stage](https://img.shields.io/badge/Stage-Playable%20MVP-F59E0B?style=flat-square&labelColor=0C0A09)
 
 Personal project · February 2026
 
@@ -45,6 +41,7 @@ Putting a language model behind a game character looks convincing in a demo and 
 The player explores locations, collects clues, questions NPCs, then names a suspect.
 
 ```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#B45309", "primaryTextColor": "#ffffff", "primaryBorderColor": "#0C0A09", "lineColor": "#94A3B8", "secondaryColor": "#292524", "tertiaryColor": "#0C0A09", "clusterBkg": "#F8FAFC", "clusterBorder": "#94A3B8", "edgeLabelBackground": "#F1F5F9", "fontFamily": "ui-sans-serif, system-ui, sans-serif"}}}%%
 stateDiagram-v2
     [*] --> intro
     intro --> explore: START_GAME
@@ -62,6 +59,7 @@ Rules enforced by the state machine: an accusation needs at least three clues, a
 Each line of NPC dialogue passes through a pipeline before the player sees it.
 
 ```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#B45309", "primaryTextColor": "#ffffff", "primaryBorderColor": "#0C0A09", "lineColor": "#94A3B8", "secondaryColor": "#292524", "tertiaryColor": "#0C0A09", "clusterBkg": "#F8FAFC", "clusterBorder": "#94A3B8", "edgeLabelBackground": "#F1F5F9", "fontFamily": "ui-sans-serif, system-ui, sans-serif"}}}%%
 flowchart LR
     Q["Player message"] --> G["Guardrails · injection and banned topics"]
     G --> C{"Cached?"}
